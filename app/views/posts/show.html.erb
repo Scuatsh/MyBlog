@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @post.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @post.description %>
+</p>
+
+<p>
+  <strong>Categories:</strong>
+  <%= @post.categories %>
+</p>
+_____________________________________________
+<h2>Comentarios</h2>
+
+<% @post.comments.each do |comment| %>
+  <p><%= comment.text %></p>
+  <p><%= time_ago_in_words comment.created_at %> ago</p>
+     <%- if user_signed_in? %>
+     <table>
+	   <tr>
+       
+        <td><%= link_to 'Destroy', [@post, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	    </tr>
+
+    </table>
+   <p>________________________________________________</p>
+    <%end%>
+<%end%>
+
+<%- if user_signed_in? %>
+   <%= form_for [@post, @post.comments.build] do |f| %>
+   <p><%= f.text_area :text, :size => '40x10' %></p>
+   <p><%= f.submit "comentar" %></p>
+   <% end%>
+<%- else %>
+<p><h3>Debes estar registrado para comentar este Post</h3></p>
+
+<%end%>
+
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
