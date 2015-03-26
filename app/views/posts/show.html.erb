@@ -23,7 +23,6 @@ _____________________________________________
      <%- if user_signed_in? %>
      <table>
 	   <tr>
-       
         <td><%= link_to 'Destroy', [@post, comment], method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	    </tr>
 
@@ -33,7 +32,7 @@ _____________________________________________
 <%end%>
 
 <%- if user_signed_in? %>
-   <%= form_for [@post, @post.comments.build] do |f| %>
+      <%= form_for [@post, @post.comments.build] do |f| %>
    <p><%= f.text_area :text, :size => '40x10' %></p>
    <p><%= f.submit "comentar" %></p>
    <% end%>

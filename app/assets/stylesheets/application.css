@@ -15,12 +15,17 @@
  */
  body{
 background-color: #FAFAFA;
+
 }
 
- #Autor{
+ .Autor{
  	
- 	background-color: #A9BCF5;
  	text-align: center;
- 	font-size: 45;
-
+ 	font-family: Gill Sans;
+ 	font-size: 35px;
  }
+ .user{
+ 	text-align: right;
+ 	font-size: 15px;
+
+ 	 }
